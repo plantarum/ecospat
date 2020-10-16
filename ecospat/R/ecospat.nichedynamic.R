@@ -134,7 +134,7 @@ ecospat.grid.clim.dyn <- function(glob, glob1, sp, R, th.sp = 0, th.env = 0,
     Z.th <- quantile(glob1r, th.env)
     glob1.dens[glob1.dens < Z.th] <- 0
     if (!is.null(geomask)) {
-      proj4string(geomask) <- NA
+      crs(geomask) <- NA
       glob1.dens <- mask(glob1.dens, geomask, updatevalue = 0)  # Geographical mask in the case if the analysis takes place in the geographical space
     }
     Z <- glob1.dens * nrow(glob1)/cellStats(glob1.dens, "sum")
