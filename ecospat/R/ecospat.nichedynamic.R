@@ -236,11 +236,9 @@ ecospat.plot.niche.dyn <- function(z1, z2, quant, title = "", name.axis1 = "Axis
     cat <- ecospat.niche.dyn.index(z1, z2, intersection = quant)$dyn
     inter <- cbind(z1$x[-length(z1$x)], z1$x[-1], cat[-1])
     apply(inter, 1, seg.cat, col.unf = "#00FF0050", col.exp = "#FF000050",
-      col.stab = "#0000FF50")
-
-  }
-
-  if (!is.null(z1$y)) {
+          col.stab = "#0000FF50")
+    
+  } else {
     z <- t(as.matrix(z1$w + 2 * z2$w))[,nrow(as.matrix(z1$z.uncor)):1]
     z1$Z<-t(as.matrix(z1$Z))[,nrow(as.matrix(z1$Z)):1]
     z2$Z<-t(as.matrix(z2$Z))[,nrow(as.matrix(z2$Z)):1]
