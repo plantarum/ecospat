@@ -269,7 +269,9 @@ ecospat.CCV.modeling <- function(sp.data,
   #require(gtools)
   #require(PresenceAbsence)
   
-  attachNamespace("biomod2",include.only = "ModelsTable")
+  #attachNamespace("biomod2",include.only = "ModelsTable")
+  #ModelsTable <- biomod2::ModelsTable
+  #OptionsBigboss <- biomod2::OptionsBigboss
   
   #Checking all the input data
   stopifnot(dim(sp.data)[1]==dim(xy)[1])
@@ -1712,7 +1714,7 @@ ecospat.CCV.communityEvaluation.prob <- function(ccv.modeling.data,
     temp.df <- data.frame(obs=as.numeric(data[1:(length(data)/2)]),pred=as.numeric(data[((length(data)/2)+1):length(data)]))
     temp.df <- temp.df[order(-temp.df$pred),]
     AnB <- 2* sum(temp.df$pred[temp.df$obs==1])
-    AuB <- sum(temp.df$pred[temp.df$pred>=min(temp.df$pred[temp.df$obs==1])]) + sum(temp.df$pred[temp.df$obs==1])
+    AuB <- sum(temp.df$pred[temp.df$pred>=min(temp.df$pred[temp.df$obs==1])]) + 2* sum(temp.df$pred[temp.df$obs==1])
     return(AnB/AuB)
   }
   
